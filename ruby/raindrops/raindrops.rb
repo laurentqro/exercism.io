@@ -1,4 +1,4 @@
-class Raindrops
+module Raindrops
   def self.convert(int)
     case
       when int%3 == 0 && int%5 == 0 && int%7 == 0
