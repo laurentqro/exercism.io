@@ -1,26 +1,21 @@
-class Complement
-  def self.of_dna(strand)
-    complement = ""
-    strand.each_char {|nucleotide| complement += get_rna_complement_of(nucleotide)}
-    complement
+module Complement
+
+  # DNA <-> RNA maps
+  DNA_RNA = {"G" => "C", "C" => "G", "T" => "A", "A" => "U"}
+  RNA_DNA = DNA_RNA.invert
+
+  def self.of_dna(dna_strand)
+    get_complement_of(dna_strand, DNA_RNA)
   end
 
-  def self.of_rna(strand)
-    complement = ""
-    strand.each_char {|nucleotide| complement += get_dna_complement_of(nucleotide)}
-    complement
+  def self.of_rna(rna_strand)
+    get_complement_of(rna_strand, RNA_DNA)
   end
 
   private
 
-  def self.get_rna_complement_of(nucleotide)
-    DNA_RNA[nucleotide.to_s]
+  def self.get_complement_of(strand, map)
+    strand.each_char.map { |nucleotide| map[nucleotide] }.join
   end
 
-  def self.get_dna_complement_of(nucleotide)
-    RNA_DNA[nucleotide.to_s]
-  end
-
-  DNA_RNA = {"G" => "C", "C" => "G", "T" => "A", "A" => "U"}
-  RNA_DNA = DNA_RNA.invert
 end
