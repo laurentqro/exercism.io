@@ -1,9 +1,5 @@
 module Complement
 
-  # DNA <-> RNA maps
-  DNA_RNA = {"G" => "C", "C" => "G", "T" => "A", "A" => "U"}
-  RNA_DNA = DNA_RNA.invert
-
   def self.of_dna(dna_strand)
     get_complement_of(dna_strand, DNA_RNA)
   end
@@ -13,6 +9,10 @@ module Complement
   end
 
   private
+
+  # DNA <-> RNA maps
+  DNA_RNA = {"G" => "C", "C" => "G", "T" => "A", "A" => "U"}
+  RNA_DNA = DNA_RNA.invert
 
   def self.get_complement_of(strand, map)
     strand.each_char.map { |nucleotide| map[nucleotide] }.join
