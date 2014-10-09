@@ -14,13 +14,13 @@ class Complement
   private
 
   def self.get_rna_complement_of(nucleotide)
-    RNA_COMPLEMENT[nucleotide.to_s]
+    DNA_RNA[nucleotide.to_s]
   end
 
   def self.get_dna_complement_of(nucleotide)
-    DNA_COMPLEMENT[nucleotide.to_s]
+    RNA_DNA[nucleotide.to_s]
   end
 
-  RNA_COMPLEMENT = {"G" => "C", "C" => "G", "T" => "A", "A" => "U"}
-  DNA_COMPLEMENT = {"G" => "C", "C" => "G", "T" => "A", "A" => "T", "U" => "A"}
+  DNA_RNA = {"G" => "C", "C" => "G", "T" => "A", "A" => "U"}
+  RNA_DNA = DNA_RNA.invert
 end
